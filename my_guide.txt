@@ -1,0 +1,44 @@
+# ایجاد محیط جدید از فایل environment.yml
+conda env create -f environment.yml
+
+# فعال کردن محیط
+conda activate 
+
+# ایجاد فایل .env از فایل .env.example
+Copy-Item .env.example .env
+
+# تست محیط
+python -c "print('Hello World!')"
+python -c "import flask, langchain; print('✅ محیط آماده است!')"
+
+# اجرا کردن تست اولیه
+python -m tests.test_installation
+
+# 1. ایجاد محیط conda
+conda create -n legal-assistant python=3.9
+conda activate legal-assistant
+
+# 2. نصب پکیج‌های مورد نیاز
+pip install python-docx hazm pydantic tqdm
+
+# 3. ایجاد ساختار پوشه‌ها
+mkdir -p legal_assistant/{data/{raw,processed,sample},src/{core,data_processing,rag,comparison,llm,utils},web,tests,scripts,docs}
+
+# 4. کپی فایل‌های کد در مسیرهای مربوطه
+
+# 5. قرار دادن فایل Part2_Legals.docx در data/raw/
+
+# 6. اجرای پردازش
+cd legal_assistant
+python scripts/process_documents.py 
+data/raw/Part2_Legals.docx
+
+
+# اجرا کردن فاز ۱
+python scripts/process_documents.py
+
+# اجرا کردن فاز ۲
+python scripts/process_documents.py
+
+# اجرا کردن فاز ۳
+python scripts/process_documents.py

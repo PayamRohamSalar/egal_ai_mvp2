@@ -76,3 +76,7 @@ models/
 temp/
 tmp/
 *.tmp
+
+# run.txt
+run.txt
+
